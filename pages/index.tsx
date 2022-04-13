@@ -1,9 +1,9 @@
-import { Button } from '@chakra-ui/react';
 import { useAddress, useMetamask } from '@thirdweb-dev/react';
 import { ConnectWalletButton } from '../components/core/ConnectWalletButton/ConnectWalletButton';
 import { Details } from '../components/core/Details/Details';
 import { WalletConnect } from '../components/core/WalletConnect/WalletConnect';
 import { Wrapper } from '../components/shared/Wrapper/Wrapper';
+import Dashboard from './dashboard';
 
 export default function Home() {
   const address = useAddress();
@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <Wrapper>
       {address ? (
-        <h2>{address}</h2>
+        <Dashboard />
       ) : (
         <WalletConnect>
           <ConnectWalletButton onClick={connectWithMetask} />

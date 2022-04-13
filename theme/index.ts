@@ -117,7 +117,7 @@ const theme = extendTheme({
           borderRadius: '0.4rem',
           bg: '#3773f5',
           color: '#000',
-          transition: 'all .3s ease-in-out',
+          transition: 'all .2s ease-in-out',
 
           _hover: {
             transform: 'scale(1.05)',
@@ -133,10 +133,16 @@ const theme = extendTheme({
           },
         }),
         secondary: (props: any) => ({
-          color: mode('white', 'gray.800')(props),
-          bg: mode('accent.300', 'accent.100')(props),
+          order: '1px solid #282b2f',
+          p: '1.5rem 1.2rem',
+          fontSize: '1.3rem',
+          fontWeigt: '500',
+          borderRadius: '0.4rem',
+          color: '#fff',
+          transition: 'all .2s ease-in-out',
+
           _hover: {
-            bg: mode('accent.400', 'accent.200')(props),
+            transform: 'scale(1.05)',
           },
         }),
         secondaryGhost: (props: any) => ({
