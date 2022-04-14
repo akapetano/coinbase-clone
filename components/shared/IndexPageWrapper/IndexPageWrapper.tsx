@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
 
-export const Wrapper = ({ children, ...restProps }: FlexProps) => {
+export const IndexPageWrapper = ({ children, ...restProps }: FlexProps) => {
   return (
     <Flex
       h="100vh"

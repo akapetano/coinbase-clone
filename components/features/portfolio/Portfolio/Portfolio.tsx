@@ -1,48 +1,32 @@
-import { PortfolioTableContainer } from '../PortfolioTableContainer/PortfolioTableContainer';
 import { PortfolioWrapper } from '../PortfolioWrapper/PortfolioWrapper';
 import { PortfolioTable } from '../PortfolioTable/PortfolioTable';
 import { PortfolioTableItem } from '../PortfolioTableItem/PortfolioTableItem';
 import { PortfolioTitle } from '../PortfolioTitle/PortfolioTitle';
-import { Box, Divider, Table, Heading } from '@chakra-ui/react';
-import { PortfolioTableRow } from '../PortfolioTableRow/PortfolioTableRow';
-import { BsThreeDotsVertical } from 'react-icons/bs';
+import { Box, Divider, Tbody, Thead, Tr } from '@chakra-ui/react';
+import { PortfolioTableHead } from '../PortfolioTableHead/PortfolioTableHead';
+
 import { coins } from '../../../../static/coins';
 import { Coin } from '../Coin/Coin';
 
 export const Portfolio = () => {
   return (
     <PortfolioWrapper>
-      <PortfolioTableContainer>
-        <PortfolioTable>
-          <PortfolioTableItem>
-            <PortfolioTitle>Your Assets</PortfolioTitle>
-          </PortfolioTableItem>
-          <Divider />
-          <Table>
-            <PortfolioTableItem>
-              <PortfolioTableRow>
-                <Box>Name</Box>
-                <Box>Balance</Box>
-                <Box>Price</Box>
-                <Box>Allocation</Box>
-                <Box>Allocation</Box>
-                <Box>
-                  <BsThreeDotsVertical />
-                </Box>
-              </PortfolioTableRow>
-            </PortfolioTableItem>
-            <Divider />
-            <Box>
-              {coins.map((coin) => (
-                <Box key={coin.name}>
-                  <Coin coin={coin} />
-                  <Divider />
-                </Box>
-              ))}
-            </Box>
-          </Table>
-        </PortfolioTable>
-      </PortfolioTableContainer>
+      <PortfolioTable>
+        <PortfolioTitle />
+        <Divider borderColor="#282b2f" />
+        <PortfolioTableHead />
+        <Divider borderColor="#282b2f" />
+        <Tbody>
+          <Tr>
+            {coins.map((coin) => (
+              <Box key={coin.name}>
+                <Coin coin={coin} />
+                <Divider borderColor="#282b2f" />
+              </Box>
+            ))}
+          </Tr>
+        </Tbody>
+      </PortfolioTable>
     </PortfolioWrapper>
   );
 };

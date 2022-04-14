@@ -6,7 +6,7 @@ export const Main = () => {
     <Flex
       className="mainContainer"
       maxHeight="calc(100vh - 64px)"
-      overflow="scroll"
+      overflow="hidden"
       sx={{ '.mainContainer > div': { borderRadius: '0.4rem' } }}
     >
       <Portfolio />

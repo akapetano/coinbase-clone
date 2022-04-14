@@ -1,4 +1,9 @@
-import { extendTheme, theme as base, ThemeConfig } from '@chakra-ui/react';
+import {
+  extendTheme,
+  theme as base,
+  ThemeConfig,
+  withDefaultColorScheme,
+} from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
 const breakpoints = {
@@ -24,22 +29,7 @@ const theme = extendTheme({
         color: mode('gray.700', 'gray.200')(props),
         padding: '0',
         margin: '0',
-        fontSize: '1.2rem',
-        lineHeight: 1.6,
-        minHeight: 'fit-content',
-        sx: {
-          '&::-webkit-scrollbar': {
-            width: '16px',
-            borderRadius: '8px',
-            background: `black`,
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: `black`,
-          },
-        },
-      },
-      ul: {
-        marginLeft: '2rem',
+        fontSize: '1rem',
       },
       a: {
         position: 'relative',
@@ -166,6 +156,13 @@ const theme = extendTheme({
             color: mode('brand.700', 'brand.200')(props),
             textDecoration: 'none',
           },
+        }),
+      },
+    },
+    Divider: {
+      variants: {
+        primary: (props: any) => ({
+          borderColor: '#8a919e',
         }),
       },
     },

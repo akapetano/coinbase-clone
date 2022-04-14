@@ -5,7 +5,7 @@ export const HeaderWrapper = ({ children, ...restProps }: FlexProps) => {
     <Flex
       width="calc(100% - 3rem)"
       p="1rem 1.5rem"
-      borderBottom="1px solid gray.600"
+      borderBottom="1px solid #282b2f"
       alignItems="center"
       {...restProps}
     >
