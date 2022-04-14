@@ -1,15 +1,14 @@
-import { Thead, TableHeadProps, Divider } from '@chakra-ui/react';
-
+import { Box, Divider } from '@chakra-ui/react';
 import { PortfolioTableHeadTitles } from '../PortfolioTableHeadTitles/PortfolioTableHeadTitles';
 import { PortfolioTitle } from '../PortfolioTitle/PortfolioTitle';
 
-export const PortfolioTableHead = ({ ...restProps }: TableHeadProps) => {
+export const PortfolioTableHead = () => {
   return (
-    <Thead>
+    <Box>
       <PortfolioTitle />
       <Divider borderColor="#282b2f" />
       <PortfolioTableHeadTitles />
       <Divider borderColor="#282b2f" />
-    </Thead>
+    </Box>
   );
 };

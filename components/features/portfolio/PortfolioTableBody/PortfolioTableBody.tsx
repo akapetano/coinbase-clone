@@ -1,18 +1,18 @@
-import { Box, Divider, Tbody, Tr } from '@chakra-ui/react';
+import { Box, Divider } from '@chakra-ui/react';
 import { coins } from '../../../../static/coins';
 import { Coin } from '../Coin/Coin';
 
 export const PortfolioTableBody = () => {
   return (
-    <Tbody>
-      <Tr>
+    <Box>
+      <Box>
         {coins.map((coin) => (
           <Box key={coin.name}>
             <Coin coin={coin} />
             <Divider borderColor="#282b2f" />
           </Box>
         ))}
-      </Tr>
-    </Tbody>
+      </Box>
+    </Box>
   );
 };

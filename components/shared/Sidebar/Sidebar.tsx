@@ -7,9 +7,11 @@ import { navItems } from '../../../static/navItems';
 import { NavItem } from '../../core/NavItem/NavItem';
 import { NavIcon } from '../../core/NavIcon/NavIcon';
 import { NavTitle } from '../../core/NavTitle/NavTitle';
+import { Box } from '@chakra-ui/react';
 
 export const Sidebar = () => {
   const [activeIcon, setActiveIcon] = useState(navItems[0].title);
+  console.log(navItems);
 
   return (
     <SidebarWrapper>
@@ -19,15 +21,12 @@ export const Sidebar = () => {
       <NavItemsContainer>
         {navItems.map((navItem) => (
           <NavItem
-            key={navItem.title}
-            onClick={() => {
-              console.log('Clicked');
-              setActiveIcon(navItem.title);
-            }}
+            key={navItem.id}
+            onClick={() => setActiveIcon(navItem.title)}
           >
             <NavIcon
               icon={navItem.icon}
-              color={navItem.title === activeIcon && '#3773f5'}
+              color={navItem.title === activeIcon ? '#3773f5' : 'white'}
             />
             <NavTitle title={navItem.title} />
           </NavItem>
