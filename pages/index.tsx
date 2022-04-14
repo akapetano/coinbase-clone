@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <IndexPageWrapper>
       {address ? (
-        <Dashboard />
+        <Dashboard walletAddress={address} />
       ) : (
         <WalletConnect>
           <ConnectWalletButton onClick={connectWithMetask} />

@@ -4,12 +4,12 @@ import { MainContainer } from '../components/shared/MainContainer/MainContainer'
 import { Main } from '../components/shared/Main/Main';
 import { Sidebar } from '../components/shared/Sidebar/Sidebar';
 
-const Dashboard = () => {
+const Dashboard = ({ walletAddress }) => {
   return (
     <DashboardWrapper>
       <Sidebar />
       <MainContainer>
-        <Header />
+        <Header walletAddress={walletAddress} />
         <Main />
       </MainContainer>
     </DashboardWrapper>
