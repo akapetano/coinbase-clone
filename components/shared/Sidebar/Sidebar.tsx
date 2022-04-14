@@ -11,7 +11,6 @@ import { Box } from '@chakra-ui/react';
 
 export const Sidebar = () => {
   const [activeIcon, setActiveIcon] = useState(navItems[0].title);
-  console.log(navItems);
 
   return (
     <SidebarWrapper>
@@ -23,6 +22,9 @@ export const Sidebar = () => {
           <NavItem
             key={navItem.id}
             onClick={() => setActiveIcon(navItem.title)}
+            transform={
+              navItem.title === activeIcon ? 'scale(1.05)' : 'scale(1)'
+            }
           >
             <NavIcon
               icon={navItem.icon}

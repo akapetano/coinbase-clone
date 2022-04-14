@@ -1,5 +1,6 @@
 import { Flex } from '@chakra-ui/react';
 import { Portfolio } from '../../features/portfolio/Portfolio/Portfolio';
+import { Promos } from '../../features/portfolio/Promos/Promos';
 
 export const Main = () => {
   return (
@@ -10,6 +11,7 @@ export const Main = () => {
       sx={{ '.mainContainer > div': { borderRadius: '0.4rem' } }}
     >
       <Portfolio />
+      <Promos />
     </Flex>
   );
 };
