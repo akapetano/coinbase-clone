@@ -1,6 +1,8 @@
 import { Flex } from '@chakra-ui/react';
+import { BalanceChart } from '../../core/BalanceChart/BalanceChart';
 import { Portfolio } from '../../features/portfolio/Portfolio/Portfolio';
 import { Promos } from '../../features/portfolio/Promos/Promos';
+import { chartData, chartOptions } from '../../../static/chart';
 
 export const Main = () => {
   return (
