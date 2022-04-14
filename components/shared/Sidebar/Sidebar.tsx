@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Logo } from '../../core/Logo/Logo';
 import { LogoContainer } from '../../core/LogoContainer/LogoContainer';
 import { NavItemsContainer } from '../../core/NavItemsContainer/NavItemsContainer';
@@ -8,6 +9,8 @@ import { NavIcon } from '../../core/NavIcon/NavIcon';
 import { NavTitle } from '../../core/NavTitle/NavTitle';
 
 export const Sidebar = () => {
+  const [activeIcon, setActiveIcon] = useState(navItems[0].title);
+
   return (
     <SidebarWrapper>
       <LogoContainer>
@@ -15,8 +18,17 @@ export const Sidebar = () => {
       </LogoContainer>
       <NavItemsContainer>
         {navItems.map((navItem) => (
-          <NavItem key={navItem.title}>
-            <NavIcon icon={navItem.icon} />
+          <NavItem
+            key={navItem.title}
+            onClick={() => {
+              console.log('Clicked');
+              setActiveIcon(navItem.title);
+            }}
+          >
+            <NavIcon
+              icon={navItem.icon}
+              color={navItem.title === activeIcon && '#3773f5'}
+            />
             <NavTitle title={navItem.title} />
           </NavItem>
         ))}

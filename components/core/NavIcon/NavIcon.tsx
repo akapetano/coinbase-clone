@@ -1,6 +1,11 @@
-import { Grid, Icon } from '@chakra-ui/react';
+import { Grid, Icon, IconProps } from '@chakra-ui/react';
+import { IconType } from 'react-icons';
 
-export const NavIcon = ({ icon }) => {
+interface INavIcon extends IconProps {
+  icon: IconType;
+}
+
+export const NavIcon = ({ icon, ...restProps }: INavIcon) => {
   return (
     <Grid
       bg="#141519"
@@ -9,7 +14,7 @@ export const NavIcon = ({ icon }) => {
       m="0 1rem"
       place-items="center"
     >
-      <Icon as={icon} />
+      <Icon as={icon} {...restProps} />
     </Grid>
   );
 };
