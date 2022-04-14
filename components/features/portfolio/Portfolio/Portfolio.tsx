@@ -7,6 +7,7 @@ import { Box, Divider, Table, Heading } from '@chakra-ui/react';
 import { PortfolioTableRow } from '../PortfolioTableRow/PortfolioTableRow';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { coins } from '../../../../static/coins';
+import { Coin } from '../Coin/Coin';
 
 export const Portfolio = () => {
   return (
@@ -34,8 +35,7 @@ export const Portfolio = () => {
             <Box>
               {coins.map((coin) => (
                 <Box key={coin.name}>
-                  <Heading>{coin.name}</Heading>
-                  {/* <Coin coin={coin} />  */}
+                  <Coin coin={coin} />
                   <Divider />
                 </Box>
               ))}

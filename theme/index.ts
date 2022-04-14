@@ -181,10 +181,11 @@ const theme = extendTheme({
     Text: {
       variants: {
         primary: (props: any) => ({
-          color: mode('gray.700', 'gray.200')(props),
+          marginBottom: '0.1rem',
         }),
         secondary: (props: any) => ({
-          color: mode('gray.600', 'gray.400')(props),
+          color: '#8a919e',
+          fontSize: '0.8rem',
         }),
       },
     },
