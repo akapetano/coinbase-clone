@@ -2,17 +2,19 @@ import { PortfolioWrapper } from '../PortfolioWrapper/PortfolioWrapper';
 import { PortfolioTable } from '../PortfolioTable/PortfolioTable';
 import { PortfolioTableHead } from '../PortfolioTableHead/PortfolioTableHead';
 import { PortfolioTableBody } from '../PortfolioTableBody/PortfolioTableBody';
-import { BalanceChart } from '../../../core/BalanceChart/BalanceChart';
-import { chartData, chartOptions } from '../../../../static/chart';
+import { Content } from '../Content/Content';
+import { Chart } from '../../../core/Chart/Chart';
 
 export const Portfolio = () => {
   return (
     <PortfolioWrapper>
-      <BalanceChart data={chartData} options={chartOptions} />
-      <PortfolioTable>
-        <PortfolioTableHead />
-        <PortfolioTableBody />
-      </PortfolioTable>
+      <Content>
+        <Chart />
+        <PortfolioTable>
+          <PortfolioTableHead />
+          <PortfolioTableBody />
+        </PortfolioTable>
+      </Content>
     </PortfolioWrapper>
   );
 };

@@ -4,7 +4,7 @@ import 'chart.js/auto';
 
 export const BalanceChart = ({ data, options }) => {
   return (
-    <Box flex="1">
+    <Box>
       <Line data={data} options={options} width={400} height={150} />
     </Box>
   );

@@ -1,16 +1,22 @@
 import { Flex } from '@chakra-ui/react';
-import { BalanceChart } from '../../core/BalanceChart/BalanceChart';
 import { Portfolio } from '../../features/portfolio/Portfolio/Portfolio';
 import { Promos } from '../../features/portfolio/Promos/Promos';
-import { chartData, chartOptions } from '../../../static/chart';
+import { Chart } from 'react-chartjs-2';
 
 export const Main = () => {
   return (
     <Flex
+      p="0.5rem"
       className="mainContainer"
       maxHeight="calc(100vh - 64px)"
       overflow="hidden"
-      sx={{ '.mainContainer > div': { borderRadius: '0.4rem' } }}
+      overflowY="scroll"
+      css={{
+        '&::-webkit-scrollbar': {
+          display: 'none',
+        },
+        '.mainContainer > div': { borderRadius: '0.5rem' },
+      }}
     >
       <Portfolio />
       <Promos />
