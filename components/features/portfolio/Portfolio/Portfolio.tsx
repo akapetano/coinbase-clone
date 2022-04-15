@@ -4,37 +4,13 @@ import { PortfolioTableHead } from '../PortfolioTableHead/PortfolioTableHead';
 import { PortfolioTableBody } from '../PortfolioTableBody/PortfolioTableBody';
 import { Content } from '../Content/Content';
 import { Chart } from '../../../core/Chart/Chart';
-import { useState, useEffect } from 'react';
-// import { ThirdwebSDK } from '@thirdweb-dev/sdk';
-// import { ethers } from 'ethers';
 
-// const sdk = new ThirdwebSDK(
-//   new ethers.Wallet(
-//     process.env.NEXT_PUBLIC_METAMASK_KEY,
-//     ethers.getDefaultProvider('https://rinkeby.infura.io/v3/')
-//   )
-// );
+export const Portfolio = ({ walletAddress, thirdwebTokens, sanityTokens }) => {
+  thirdwebTokens[0]
+    ?.balanceOf(walletAddress)
+    .then((balance) => console.log(Number(balance.displayValue)));
 
-export const Portfolio = () => {
-  const [sanityTokens, setSanityTokens] = useState([]);
-
-  useEffect(() => {
-    const getCoins = async () => {
-      try {
-        const coins = await fetch(
-          "https://14a9ey4u.api.sanity.io/v2021-10-21/data/query/production?query=*%5B_type%3D%3D'coins'%5D%20%7B%0A%20%20name%2C%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%0A%20%20symbol%2C%0A%20%20logo%0A%7D"
-        );
-        const tempSanityTokens = await coins.json();
-
-        console.log(tempSanityTokens.result);
-        setSanityTokens(tempSanityTokens.result);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getCoins();
-  }, []);
-
+  // convert all of my tokens into USD 2:04:59
   return (
     <PortfolioWrapper>
       <Content>

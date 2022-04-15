@@ -2,7 +2,7 @@ import { Grid } from '@chakra-ui/react';
 import { Portfolio } from '../../features/portfolio/Portfolio/Portfolio';
 import { Promos } from '../../features/portfolio/Promos/Promos';
 
-export const Main = () => {
+export const Main = ({ walletAddress, sanityTokens, thirdwebTokens }) => {
   return (
     <Grid
       gridTemplateColumns={[
@@ -23,7 +23,11 @@ export const Main = () => {
         },
       }}
     >
-      <Portfolio />
+      <Portfolio
+        walletAddress={walletAddress}
+        sanityTokens={sanityTokens}
+        thirdwebTokens={thirdwebTokens}
+      />
       <Promos />
     </Grid>
   );
