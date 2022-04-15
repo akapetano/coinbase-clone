@@ -21,8 +21,8 @@ export const Portfolio = () => {
       } catch (error) {
         console.log(error);
       }
-      return getCoins();
     };
+    getCoins();
   }, []);
 
   return (
