@@ -25,6 +25,7 @@ export const Sidebar = () => {
             transform={
               navItem.title === activeIcon ? 'scale(1.05)' : 'scale(1)'
             }
+            bg={navItem.title === activeIcon ? '#141519' : ''}
           >
             <NavIcon
               icon={navItem.icon}
