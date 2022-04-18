@@ -10,7 +10,9 @@ import { ethers } from 'ethers';
 const sdk = new ThirdwebSDK(
   new ethers.Wallet(
     process.env.NEXT_PUBLIC_METAMASK_KEY,
-    ethers.getDefaultProvider('https://rinkeby.infura.io/v3/')
+    ethers.getDefaultProvider(
+      `https://rinkeby.infura.io/v3/33f18a9bdf984c63ab2ff627ed31758e`
+    )
   )
 );
 
