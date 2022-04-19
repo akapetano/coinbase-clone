@@ -3,10 +3,14 @@ import { BalanceChart } from '../BalanceChart/BalanceChart';
 import { chartData, chartOptions } from '../../../static/chart';
 import { Balance } from '../Balance/Balance';
 
-export const Chart = ({ ...restProps }: BoxProps) => {
+interface IChartProps extends BoxProps {
+  walletBalance: number;
+}
+
+export const Chart = ({ walletBalance, ...restProps }: IChartProps) => {
   return (
     <Box border="1px solid #282b2f" p="1rem 2rem" {...restProps}>
-      <Balance />
+      <Balance walletBalance={walletBalance} />
       <BalanceChart data={chartData} options={chartOptions} />
     </Box>
   );

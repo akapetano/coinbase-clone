@@ -1,7 +1,7 @@
 import { Box, BoxProps, Heading, Text } from '@chakra-ui/react';
 
 interface IBalanceProps extends BoxProps {
-  walletBalance?: string;
+  walletBalance: number;
 }
 
 export const Balance = ({ walletBalance }: IBalanceProps) => {
@@ -13,8 +13,8 @@ export const Balance = ({ walletBalance }: IBalanceProps) => {
         </Heading>
         <Text fontSize="1.8rem" fontWeight="700" m="0.5rem 0">
           {'$'}
-          {/* {walletBalance.toLocaleString('US')} */}
-          46,000
+          {walletBalance.toLocaleString()}
+          {/* 46,000 */}
         </Text>
       </Box>
     </Box>
