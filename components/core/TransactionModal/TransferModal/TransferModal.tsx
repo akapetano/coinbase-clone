@@ -1,6 +1,9 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Heading } from '@chakra-ui/react';
 import { useState } from 'react';
+import { TransferModalMain } from '../TransferModalMain/TransferModalMain';
 import { TransferOption } from '../TransferOption/TransferOption';
+import { Send } from '../Send/Send';
+import { Receive } from '../Receive/Receive';
 
 export const TransferModal = () => {
   const [action, setAction] = useState('Send');
@@ -11,6 +14,17 @@ export const TransferModal = () => {
 
   const unselectedStyle = {
     border: '1px solid #282b2f',
+  };
+
+  const selectedModal = (option) => {
+    switch (option) {
+      case 'Send':
+        return <Send />;
+      case 'Receive':
+        return <Receive />;
+      default:
+        return <Send />;
+    }
   };
 
   return (
@@ -33,6 +47,7 @@ export const TransferModal = () => {
           text="Receive"
         />
       </Flex>
+      <TransferModalMain>{selectedModal(action)}</TransferModalMain>
     </Flex>
   );
 };

@@ -14,8 +14,7 @@ export const TransactionModal = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay bg="rgba(10, 11, 13, 0.75)" />
       <ModalContent bg="#0a0b0d" border="none">
-        <ModalHeader></ModalHeader>
-        <ModalBody>
+        <ModalBody height="100%">
           <TransferModal />
         </ModalBody>
       </ModalContent>
