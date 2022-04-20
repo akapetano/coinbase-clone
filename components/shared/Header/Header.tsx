@@ -21,6 +21,9 @@ export const Header = ({ walletAddress, sanityTokens, thirdwebTokens }) => {
         </NextLink>
       </HStack>
       <TransactionModal
+        sanityTokens={sanityTokens}
+        thirdwebTokens={thirdwebTokens}
+        walletAddress={walletAddress}
         isOpen={Boolean(router.query.transfer)}
         onClose={() => router.push('/')}
       />

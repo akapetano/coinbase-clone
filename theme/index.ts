@@ -108,9 +108,11 @@ const theme = extendTheme({
           borderRadius: '0.4rem',
           bg: '#3773f5',
           color: '#000',
-          transition: 'all .2s ease-in-out',
+          transition: 'transform .2s ease-in',
+          transform: 'scale(1)',
 
           _hover: {
+            transition: 'transform .2s ease-out',
             transform: 'scale(1.05)',
           },
         }),
@@ -130,9 +132,11 @@ const theme = extendTheme({
           fontWeigt: '500',
           borderRadius: '0.4rem',
           color: '#fff',
-          transition: 'all .2s ease-in-out',
+          transition: 'transform .2s ease-in',
+          transform: 'scale(1)',
 
           _hover: {
+            transition: 'transform .2s ease-out',
             transform: 'scale(1.05)',
           },
         }),
@@ -145,6 +149,19 @@ const theme = extendTheme({
             color: mode('white', 'gray.800')(props),
             bg: mode('accent.400', 'accent.200')(props),
             borderColor: mode('accent.400', 'accent.200')(props),
+          },
+        }),
+        continue: (props: any) => ({
+          color: '#fff',
+          w: '100%',
+          bg: '#3773f5',
+          p: '1rem',
+          textAlign: 'center',
+          borderRadius: '0.4rem',
+          fontSize: '1.2rem',
+          transition: 'bg .3s ease',
+          _hover: {
+            bg: '#4a80f6',
           },
         }),
       },

@@ -1,12 +1,19 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { useState } from 'react';
 import { TransferModalMain } from '../TransferModalMain/TransferModalMain';
 import { TransferOption } from '../TransferOption/TransferOption';
 import { Send } from '../Send/Send';
 import { Receive } from '../Receive/Receive';
+import imageUrlBuilder from '@sanity/image-url';
+import { client } from '../../../../lib/sanity';
 
-export const TransferModal = () => {
+export const TransferModal = ({
+  sanityTokens,
+  thirdwebTokens,
+  walletAddress,
+}) => {
   const [action, setAction] = useState('Send');
+  const [selectedToken, setSelectedToken] = useState(sanityTokens[0]);
 
   const selectedStyle = {
     color: '#3773f5',
@@ -16,14 +23,28 @@ export const TransferModal = () => {
     border: '1px solid #282b2f',
   };
 
-  const selectedModal = (option) => {
+  const selectedModal = (option: string) => {
     switch (option) {
       case 'Send':
-        return <Send />;
+        return (
+          <Send
+            selectedToken={selectedToken}
+            setAction={setAction}
+            thirdwebTokens={thirdwebTokens}
+            walletAddress={walletAddress}
+          />
+        );
       case 'Receive':
         return <Receive />;
       default:
-        return <Send />;
+        return (
+          <Send
+            selectedToken={selectedToken}
+            setAction={setAction}
+            thirdwebTokens={thirdwebTokens}
+            walletAddress={walletAddress}
+          />
+        );
     }
   };
 
