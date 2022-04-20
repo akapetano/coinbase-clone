@@ -4,8 +4,6 @@ import { TransferModalMain } from '../TransferModalMain/TransferModalMain';
 import { TransferOption } from '../TransferOption/TransferOption';
 import { Send } from '../Send/Send';
 import { Receive } from '../Receive/Receive';
-import imageUrlBuilder from '@sanity/image-url';
-import { client } from '../../../../lib/sanity';
 
 export const TransferModal = ({
   sanityTokens,
@@ -13,7 +11,7 @@ export const TransferModal = ({
   walletAddress,
 }) => {
   const [action, setAction] = useState('Send');
-  const [selectedToken, setSelectedToken] = useState(sanityTokens[0]);
+  const [selectedToken, setSelectedToken] = useState(sanityTokens[2]);
 
   const selectedStyle = {
     color: '#3773f5',

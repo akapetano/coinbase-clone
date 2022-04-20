@@ -20,8 +20,6 @@ export const SendCoinSelectList = ({
   imageUrl,
   ...restProps
 }: ISendCoinSelectList) => {
-  console.log(selectedToken);
-
   return (
     <Flex
       alignItems="center"

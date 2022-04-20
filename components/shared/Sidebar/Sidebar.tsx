@@ -7,8 +7,6 @@ import { navItems } from '../../../static/navItems';
 import { NavItem } from '../../core/NavItem/NavItem';
 import { NavIcon } from '../../core/NavIcon/NavIcon';
 import { NavTitle } from '../../core/NavTitle/NavTitle';
-import NextLink from 'next/link';
-import { Link } from '@chakra-ui/react';
 
 export const Sidebar = () => {
   const [activeIcon, setActiveIcon] = useState(navItems[0].title);
@@ -16,11 +14,7 @@ export const Sidebar = () => {
   return (
     <SidebarWrapper>
       <LogoContainer>
-        <Link>
-          <NextLink href="/" passHref>
-            <Logo />
-          </NextLink>
-        </Link>
+        <Logo />
       </LogoContainer>
       <NavItemsContainer>
         {navItems.map((navItem) => (

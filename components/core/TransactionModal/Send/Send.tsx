@@ -17,20 +17,54 @@ export const Send = ({
   const [amount, setAmount] = useState('');
   const [recipient, setRecipient] = useState('');
   const [imageUrl, setImageUrl] = useState(null);
-  const [activeThirdwebToken, setActiveThirdwebToken] = useState('');
+  const [activeThirdwebToken, setActiveThirdwebToken] = useState(null);
+  const [activeThirdwebTokenId, setActiveThirdwebTokenId] = useState(null);
+  const [balance, setBalance] = useState('Fetching...');
 
   useEffect(() => {
     const activeToken = thirdwebTokens.find(
-      (token) => token.address === selectedToken.contractAddress
+      (token) =>
+        token.contractWrapper.readContract.address ===
+        selectedToken.contractAddress
     );
 
+    console.log(activeToken);
     setActiveThirdwebToken(activeToken);
+    setActiveThirdwebTokenId(activeToken.contractWrapper.readContract.address);
   }, [thirdwebTokens, selectedToken]);
 
   useEffect(() => {
     const url = imageUrlBuilder(client).image(selectedToken.logo).url();
     setImageUrl(url);
-  }, [selectedToken, imageUrl]);
+  }, [selectedToken]);
+
+  useEffect(() => {
+    const getBalance = async () => {
+      const balance = await activeThirdwebToken.balanceOf(walletAddress);
+      setBalance(balance.displayValue);
+      console.log(activeThirdwebToken);
+    };
+
+    if (activeThirdwebToken) {
+      getBalance();
+    }
+  }, [activeThirdwebToken, walletAddress]);
+
+  const sendCrypto = async (amount: string, recipient: string) => {
+    console.log('Sending crypto...');
+
+    if (activeThirdwebToken && activeThirdwebTokenId && amount && recipient) {
+      const tx = await activeThirdwebToken.transfer(
+        recipient,
+        activeThirdwebTokenId,
+        amount.toString().concat('000000000000000000')
+      );
+      console.log(tx);
+      setAction('Transferred');
+    } else {
+      console.error('Missing data...');
+    }
+  };
 
   return (
     <Flex flex="1" flexDir="column" height="100%">
@@ -50,6 +84,10 @@ export const Send = ({
         />
       </SendAmount>
       <SendForm
+        amount={amount}
+        activeThirdwebTokenId={activeThirdwebTokenId}
+        sendCrypto={sendCrypto}
+        balance={balance}
         selectedToken={selectedToken}
         imageUrl={imageUrl}
         recipient={recipient}

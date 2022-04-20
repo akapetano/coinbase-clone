@@ -10,6 +10,10 @@ import { SendRow } from '../SendRow/SendRow';
 import { SendWalletIcon } from '../SendWalletIcon/SendWalletIcon';
 
 interface ISendForm extends BoxProps {
+  sendCrypto: (amount: string, id: string, recipient: string) => void;
+  activeThirdwebTokenId: string;
+  amount: string;
+  balance: string;
   selectedToken: Token;
   imageUrl: string;
   recipient: string;
@@ -17,6 +21,10 @@ interface ISendForm extends BoxProps {
 }
 
 export const SendForm = ({
+  sendCrypto,
+  activeThirdwebTokenId,
+  amount,
+  balance,
   selectedToken,
   imageUrl,
   recipient,
@@ -45,12 +53,16 @@ export const SendForm = ({
         </SendRow>
       </Box>
       <SendRow>
-        <Button variant="continue" h="3rem">
+        <Button
+          onClick={() => sendCrypto(amount, activeThirdwebTokenId, recipient)}
+          variant="continue"
+          h="3rem"
+        >
           Continue
         </Button>
       </SendRow>
       <SendRow>
-        <SendBalance selectedToken={selectedToken} />
+        <SendBalance balance={balance} selectedToken={selectedToken} />
       </SendRow>
     </>
   );

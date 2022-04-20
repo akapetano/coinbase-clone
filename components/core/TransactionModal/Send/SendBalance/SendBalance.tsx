@@ -1,10 +1,12 @@
 import { Text } from '@chakra-ui/react';
 
-export const SendBalance = ({ selectedToken }) => {
+export const SendBalance = ({ balance, selectedToken }) => {
   return (
     <>
       <Text>{selectedToken.symbol} Balance</Text>
-      <Text>1.2 {selectedToken.symbol}</Text>
+      <Text>
+        {balance} {selectedToken.symbol}
+      </Text>
     </>
   );
 };
