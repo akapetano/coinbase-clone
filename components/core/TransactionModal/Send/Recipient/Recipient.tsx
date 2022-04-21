@@ -1,13 +1,13 @@
-import { Text, TextProps } from '@chakra-ui/react';
+import { Input, InputProps } from '@chakra-ui/react';
 
-export const SendCoinName = ({ ...restProps }: TextProps) => {
+export const Recipient = ({ ...restProps }: InputProps) => {
   return (
-    <Text
+    <Input
       flex="1"
-      color="#fff"
       border="none"
       bg="none"
       outline="none"
+      color="#fff"
       fontSize="1.2rem"
       mr="0.5rem"
       {...restProps}

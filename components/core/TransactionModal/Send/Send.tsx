@@ -1,12 +1,11 @@
 import { Flex } from '@chakra-ui/react';
-import { SendAmount } from './SendAmount/SendAmount';
-import { SendInput } from './SendInput/SendInput';
-import { SendInputContainer } from './SendInputContainer/SendInputContainer';
-import { SendWarning } from './SendWarning/SendWarning';
+import { SenderAmount } from './SenderAmount/SenderAmount';
+import { SenderForm } from './SenderForm/SenderForm';
 import { useEffect, useState } from 'react';
-import { SendForm } from './SendForm/SendForm';
 import imageUrlBuilder from '@sanity/image-url';
 import { client } from '../../../../lib/sanity';
+import { ContinueButton } from './ContinueButton/ContinueButton';
+import { SenderBalance } from './SenderBalance/SenderBalance';
 
 export const Send = ({
   selectedToken,
@@ -18,7 +17,6 @@ export const Send = ({
   const [recipient, setRecipient] = useState('');
   const [imageUrl, setImageUrl] = useState(null);
   const [activeThirdwebToken, setActiveThirdwebToken] = useState(null);
-  const [activeThirdwebTokenId, setActiveThirdwebTokenId] = useState(null);
   const [balance, setBalance] = useState('Fetching...');
 
   useEffect(() => {
@@ -28,9 +26,7 @@ export const Send = ({
         selectedToken.contractAddress
     );
 
-    console.log(activeToken);
     setActiveThirdwebToken(activeToken);
-    setActiveThirdwebTokenId(activeToken.contractWrapper.readContract.address);
   }, [thirdwebTokens, selectedToken]);
 
   useEffect(() => {
@@ -42,7 +38,6 @@ export const Send = ({
     const getBalance = async () => {
       const balance = await activeThirdwebToken.balanceOf(walletAddress);
       setBalance(balance.displayValue);
-      console.log(activeThirdwebToken);
     };
 
     if (activeThirdwebToken) {
@@ -51,41 +46,30 @@ export const Send = ({
   }, [activeThirdwebToken, walletAddress]);
 
   const sendCrypto = async (amount: string, recipient: string) => {
-    console.log('Sending crypto...');
-
-    if (activeThirdwebToken && activeThirdwebTokenId && amount && recipient) {
-      const tx = await activeThirdwebToken.transfer(
-        recipient,
-        activeThirdwebTokenId,
-        amount.toString().concat('000000000000000000')
-      );
-      console.log(tx);
-      setAction('Transferred');
-    } else {
-      console.error('Missing data...');
+    try {
+      console.log('Sending crypto...');
+      if (activeThirdwebToken && amount && recipient) {
+        const tx = await activeThirdwebToken.transfer(
+          recipient,
+          amount.toString().concat('000000000000000000')
+        );
+        console.log(tx);
+        setAction('Transferred');
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
     <Flex flex="1" flexDir="column" height="100%">
-      <SendAmount>
-        <SendInputContainer>
-          <SendInput
-            placeholder="0"
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-          <span>{selectedToken.symbol}</span>
-        </SendInputContainer>
-        <SendWarning
-          text="Amount is a required field"
-          color={amount ? 'transparent' : '#8a919e'}
-        />
-      </SendAmount>
-      <SendForm
+      <SenderAmount
         amount={amount}
-        activeThirdwebTokenId={activeThirdwebTokenId}
+        setAmount={setAmount}
+        selectedToken={selectedToken}
+      />
+      <SenderForm
+        amount={amount}
         sendCrypto={sendCrypto}
         balance={balance}
         selectedToken={selectedToken}
@@ -93,6 +77,12 @@ export const Send = ({
         recipient={recipient}
         setRecipient={setRecipient}
       />
+      <ContinueButton
+        amount={amount}
+        sendCrypto={sendCrypto}
+        recipient={recipient}
+      />
+      <SenderBalance balance={balance} selectedToken={selectedToken} />
     </Flex>
   );
 };

@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
-import { SendCoinIcon } from '../SendCoinIcon/SendCoinIcon';
-import { SendCoinName } from '../SendCoinName/SendCoinName';
+import { CoinIcon } from '../CoinIcon/CoinIcon';
+import { CoinName } from '../CoinName/CoinName';
 
 export type Token = {
   contractAddress: string;
@@ -10,16 +10,16 @@ export type Token = {
   usdPrice: string;
 };
 
-interface ISendCoinSelectList extends FlexProps {
+interface ICoinSelectList extends FlexProps {
   selectedToken: Token;
   imageUrl: string;
 }
 
-export const SendCoinSelectList = ({
+export const CoinSelectList = ({
   selectedToken,
   imageUrl,
   ...restProps
-}: ISendCoinSelectList) => {
+}: ICoinSelectList) => {
   return (
     <Flex
       alignItems="center"
@@ -28,8 +28,8 @@ export const SendCoinSelectList = ({
       _hover={{ cursor: 'pointer' }}
       {...restProps}
     >
-      <SendCoinIcon imageUrl={imageUrl} />
-      <SendCoinName>{selectedToken.name}</SendCoinName>
+      <CoinIcon imageUrl={imageUrl} />
+      <CoinName>{selectedToken.name}</CoinName>
     </Flex>
   );
 };

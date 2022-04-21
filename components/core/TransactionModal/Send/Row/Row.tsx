@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
 
-export const SendRow = ({ ...restProps }: FlexProps) => {
+export const Row = ({ ...restProps }: FlexProps) => {
   return (
     <Flex
       color="#8a919e"

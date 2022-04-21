@@ -1,7 +1,6 @@
-import { Grid, GridProps, Icon } from '@chakra-ui/react';
-import { FaWallet } from 'react-icons/fa';
+import { Grid, GridProps } from '@chakra-ui/react';
 
-export const SendWalletIcon = ({ ...restProps }: GridProps) => {
+export const IconWrapper = ({ ...restProps }: GridProps) => {
   return (
     <Grid
       placeItems="center"
@@ -12,8 +11,6 @@ export const SendWalletIcon = ({ ...restProps }: GridProps) => {
       overflow="hidden"
       sx={{ '& > img': { h: '120%', w: '120%', objectFit: 'cover' } }}
       {...restProps}
-    >
-      <Icon as={FaWallet} />
-    </Grid>
+    />
   );
 };

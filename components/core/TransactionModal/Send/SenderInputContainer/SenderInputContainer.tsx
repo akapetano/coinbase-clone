@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
 
-export const SendInputContainer = ({ ...restProps }: FlexProps) => {
+export const SenderInputContainer = ({ ...restProps }: FlexProps) => {
   return (
     <Flex
       flex="1"

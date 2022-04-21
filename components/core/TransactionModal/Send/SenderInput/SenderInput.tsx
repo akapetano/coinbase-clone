@@ -1,6 +1,6 @@
 import { Input, InputProps } from '@chakra-ui/react';
 
-export const SendInput = ({ ...restProps }: InputProps) => {
+export const SenderInput = ({ ...restProps }: InputProps) => {
   return (
     <Input
       size="xs"
@@ -13,11 +13,6 @@ export const SendInput = ({ ...restProps }: InputProps) => {
       fontSize="4.5rem"
       color="#3773f5"
       h="5rem"
-      sx={{
-        '&::-webkit-outer-spin-button, ::-webkit-inner-spin-button': {
-          '-webkitAppearance': 'none',
-        },
-      }}
       {...restProps}
     />
   );
