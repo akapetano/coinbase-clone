@@ -4,6 +4,7 @@ import { TransferModalMain } from '../TransferModalMain/TransferModalMain';
 import { TransferOption } from '../TransferOption/TransferOption';
 import { Send } from '../Send/Send';
 import { Receive } from '../Receive/Receive';
+import { CoinSelector } from '../Send/CoinSelector/CoinSelector';
 
 export const TransferModal = ({
   sanityTokens,
@@ -34,6 +35,17 @@ export const TransferModal = ({
         );
       case 'Receive':
         return <Receive />;
+      case 'Select':
+        return (
+          <CoinSelector
+            setAction={setAction}
+            selectedToken={selectedToken}
+            setSelectedToken={setSelectedToken}
+            sanityTokens={sanityTokens}
+            thirdwebTokens={thirdwebTokens}
+            walletAddress={walletAddress}
+          />
+        );
       default:
         return (
           <Send

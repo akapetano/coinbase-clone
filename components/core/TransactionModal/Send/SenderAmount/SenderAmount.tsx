@@ -2,7 +2,7 @@ import { Flex, FlexProps } from '@chakra-ui/react';
 import { SenderInputContainer } from '../SenderInputContainer/SenderInputContainer';
 import { SenderInput } from '../SenderInput/SenderInput';
 import { WarningToSender } from '../WarningToSender/WarningToSender';
-import { Token } from '../CoinSelectList/CoinSelectList';
+import { Token } from '../SelectedCoin/SelectedCoin';
 
 interface ISenderAmountProps extends FlexProps {
   amount: string;

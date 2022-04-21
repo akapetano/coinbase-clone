@@ -1,12 +1,16 @@
 import { Row } from '../Row/Row';
 import { FieldName } from '../FieldName/FieldName';
-import { CoinSelectList } from '../CoinSelectList/CoinSelectList';
+import { SelectedCoin } from '../SelectedCoin/SelectedCoin';
 
-export const PayWith = ({ selectedToken, imageUrl }) => {
+export const PayWith = ({ setAction, selectedToken, imageUrl }) => {
   return (
     <Row>
       <FieldName>Pay with</FieldName>
-      <CoinSelectList selectedToken={selectedToken} imageUrl={imageUrl} />
+      <SelectedCoin
+        onClick={() => setAction('Select')}
+        selectedToken={selectedToken}
+        imageUrl={imageUrl}
+      />
     </Row>
   );
 };

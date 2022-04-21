@@ -20,11 +20,13 @@ export const Send = ({
   const [balance, setBalance] = useState('Fetching...');
 
   useEffect(() => {
-    const activeToken = thirdwebTokens.find(
-      (token) =>
+    const activeToken = thirdwebTokens.find((token) => {
+      console.log(token.contractWrapper.readContract.address);
+      return (
         token.contractWrapper.readContract.address ===
         selectedToken.contractAddress
-    );
+      );
+    });
 
     setActiveThirdwebToken(activeToken);
   }, [thirdwebTokens, selectedToken]);
@@ -49,11 +51,11 @@ export const Send = ({
     try {
       console.log('Sending crypto...');
       if (activeThirdwebToken && amount && recipient) {
-        const tx = await activeThirdwebToken.transfer(
+        const transaction = await activeThirdwebToken.transfer(
           recipient,
           amount.toString().concat('000000000000000000')
         );
-        console.log(tx);
+        console.log(transaction);
         setAction('Transferred');
       }
     } catch (error) {
@@ -69,17 +71,15 @@ export const Send = ({
         selectedToken={selectedToken}
       />
       <SenderForm
-        amount={amount}
-        sendCrypto={sendCrypto}
-        balance={balance}
         selectedToken={selectedToken}
         imageUrl={imageUrl}
         recipient={recipient}
         setRecipient={setRecipient}
+        setAction={setAction}
       />
       <ContinueButton
-        amount={amount}
         sendCrypto={sendCrypto}
+        amount={amount}
         recipient={recipient}
       />
       <SenderBalance balance={balance} selectedToken={selectedToken} />

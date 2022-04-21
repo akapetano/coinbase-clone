@@ -10,16 +10,16 @@ export type Token = {
   usdPrice: string;
 };
 
-interface ICoinSelectList extends FlexProps {
+interface ISelectedCoin extends FlexProps {
   selectedToken: Token;
   imageUrl: string;
 }
 
-export const CoinSelectList = ({
+export const SelectedCoin = ({
   selectedToken,
   imageUrl,
   ...restProps
-}: ICoinSelectList) => {
+}: ISelectedCoin) => {
   return (
     <Flex
       alignItems="center"
@@ -28,7 +28,7 @@ export const CoinSelectList = ({
       _hover={{ cursor: 'pointer' }}
       {...restProps}
     >
-      <CoinIcon imageUrl={imageUrl} />
+      <CoinIcon imageUrl={imageUrl} selectedToken={selectedToken} />
       <CoinName>{selectedToken.name}</CoinName>
     </Flex>
   );
