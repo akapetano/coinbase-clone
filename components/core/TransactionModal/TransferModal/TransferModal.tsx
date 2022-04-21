@@ -1,10 +1,11 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Heading } from '@chakra-ui/react';
 import { useState } from 'react';
 import { TransferModalMain } from '../TransferModalMain/TransferModalMain';
 import { TransferOption } from '../TransferOption/TransferOption';
 import { Send } from '../Send/Send';
 import { Receive } from '../Receive/Receive';
 import { CoinSelector } from '../Send/CoinSelector/CoinSelector';
+import { TailSpin } from 'react-loader-spinner';
 
 export const TransferModal = ({
   sanityTokens,
@@ -46,6 +47,48 @@ export const TransferModal = ({
             walletAddress={walletAddress}
           />
         );
+      case 'Transferring':
+        return (
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            flexDir="column"
+            w="100%"
+            h="100%"
+            fontSize="1.5"
+          >
+            <Heading as="h2" mb="1rem">
+              Transfer in progress...
+            </Heading>
+            <TailSpin
+              width="100"
+              height="100"
+              color="#3773f5"
+              ariaLabel="loading"
+            />
+          </Flex>
+        );
+      case 'Transferred':
+        return (
+          <Heading as="h2" color="#27ad75">
+            Transfer complete.
+          </Heading>
+        );
+      case 'Failed':
+        return (
+          <Flex
+            w="100%"
+            h="100%"
+            alignItems="center"
+            justifyContent="center"
+            flexDir="column"
+            fontSize="1.5"
+          >
+            <Heading as="h2" color="red.500">
+              Transfer failed.
+            </Heading>
+          </Flex>
+        );
       default:
         return (
           <Send
@@ -82,3 +125,5 @@ export const TransferModal = ({
     </Flex>
   );
 };
+
+// 3:51:51

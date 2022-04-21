@@ -21,7 +21,6 @@ export const Send = ({
 
   useEffect(() => {
     const activeToken = thirdwebTokens.find((token) => {
-      console.log(token.contractWrapper.readContract.address);
       return (
         token.contractWrapper.readContract.address ===
         selectedToken.contractAddress
@@ -51,6 +50,7 @@ export const Send = ({
     try {
       console.log('Sending crypto...');
       if (activeThirdwebToken && amount && recipient) {
+        setAction('Transferring');
         const transaction = await activeThirdwebToken.transfer(
           recipient,
           amount.toString().concat('000000000000000000')
@@ -59,7 +59,8 @@ export const Send = ({
         setAction('Transferred');
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      setAction('Failed');
     }
   };
 
