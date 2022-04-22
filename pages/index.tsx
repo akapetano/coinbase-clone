@@ -7,7 +7,7 @@ import Dashboard from './dashboard';
 
 export default function Home() {
   const address = useAddress();
-  const connectWithMetask = useMetamask();
+  const connectWithMetamask = useMetamask();
 
   return (
     <IndexPageWrapper>
@@ -15,7 +15,7 @@ export default function Home() {
         <Dashboard walletAddress={address} />
       ) : (
         <WalletConnect>
-          <ConnectWalletButton onClick={connectWithMetask} />
+          <ConnectWalletButton onClick={connectWithMetamask} />
           <Details />
         </WalletConnect>
       )}

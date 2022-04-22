@@ -1,12 +1,15 @@
+import { useMetamask } from '@thirdweb-dev/react';
 import { Heading, HStack, Button } from '@chakra-ui/react';
 import { HeaderWrapper } from '../../core/HeaderWrapper/HeaderWrapper';
 import { WalletConnectionStatus } from '../../core/WalletConnectionStatus/WalletConnectionStatus';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import { TransactionModal } from '../../core/TransactionModal/TransactionModal';
+import { ConnectWalletButton } from '../../core/ConnectWalletButton/ConnectWalletButton';
 
 export const Header = ({ walletAddress, sanityTokens, thirdwebTokens }) => {
   const router = useRouter();
+  const connectWithMetamask = useMetamask();
 
   return (
     <HeaderWrapper>
@@ -14,7 +17,11 @@ export const Header = ({ walletAddress, sanityTokens, thirdwebTokens }) => {
         Assets
       </Heading>
       <HStack spacing="1rem">
-        <WalletConnectionStatus walletAddress={walletAddress} />
+        {walletAddress ? (
+          <WalletConnectionStatus walletAddress={walletAddress} />
+        ) : (
+          <ConnectWalletButton onClick={connectWithMetamask} />
+        )}
         <Button variant="primary">Buy / Sell</Button>
         <NextLink href={'/?transfer=1'} passHref>
           <Button variant="secondary">Send / Receive</Button>
