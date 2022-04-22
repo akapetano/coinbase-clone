@@ -1,6 +1,6 @@
 import { IconWrapper } from '../IconWrapper/IconWrapper';
 import { Image } from '@chakra-ui/react';
-import { Token } from '../SelectedCoin/SelectedCoin';
+import { Token } from '../TransactionModal/Send/SelectedCoin/SelectedCoin';
 
 interface ICoinIconProps {
   imageUrl: string;

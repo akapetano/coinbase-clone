@@ -1,5 +1,5 @@
 import { Box, Flex, ListItem, Text, Icon } from '@chakra-ui/react';
-import { CoinIcon } from '../CoinIcon/CoinIcon';
+import { CoinIcon } from '../../../CoinIcon/CoinIcon';
 import { useState, useEffect } from 'react';
 import imageUrlBuilder from '@sanity/image-url';
 import { client } from '../../../../../lib/sanity';

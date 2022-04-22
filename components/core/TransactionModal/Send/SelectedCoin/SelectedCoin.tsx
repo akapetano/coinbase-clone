@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from '@chakra-ui/react';
-import { CoinIcon } from '../CoinIcon/CoinIcon';
-import { CoinName } from '../CoinName/CoinName';
+import { CoinIcon } from '../../../CoinIcon/CoinIcon';
+import { CoinName } from '../../../CoinName/CoinName';
 
 export type Token = {
   contractAddress: string;

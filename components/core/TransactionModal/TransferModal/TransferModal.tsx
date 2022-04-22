@@ -37,7 +37,13 @@ export const TransferModal = ({
           />
         );
       case 'Receive':
-        return <Receive />;
+        return (
+          <Receive
+            setAction={setAction}
+            selectedToken={selectedToken}
+            walletAddress={walletAddress}
+          />
+        );
       case 'Select':
         return (
           <CoinSelector
@@ -73,7 +79,7 @@ export const TransferModal = ({
       case 'Transferred':
         return (
           <Heading as="h2" color="#27ad75">
-            Transfer complete.
+            Transfer complete. 🚀
           </Heading>
         );
       case 'Failed':
@@ -91,7 +97,7 @@ export const TransferModal = ({
               Transfer failed.
             </Heading>
             <Text fontSize="1rem" color="red.600">
-              {sendError.slice(-100)}
+              {sendError}
             </Text>
           </Flex>
         );
