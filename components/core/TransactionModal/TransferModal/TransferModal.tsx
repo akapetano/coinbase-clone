@@ -1,4 +1,4 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 import { useState } from 'react';
 import { TransferModalMain } from '../TransferModalMain/TransferModalMain';
 import { TransferOption } from '../TransferOption/TransferOption';
@@ -14,6 +14,7 @@ export const TransferModal = ({
 }) => {
   const [action, setAction] = useState('Send');
   const [selectedToken, setSelectedToken] = useState(sanityTokens[2]);
+  const [sendError, setSendError] = useState('');
 
   const selectedStyle = {
     color: '#3773f5',
@@ -32,6 +33,7 @@ export const TransferModal = ({
             setAction={setAction}
             thirdwebTokens={thirdwebTokens}
             walletAddress={walletAddress}
+            setSendError={setSendError}
           />
         );
       case 'Receive':
@@ -82,11 +84,15 @@ export const TransferModal = ({
             alignItems="center"
             justifyContent="center"
             flexDir="column"
-            fontSize="1.5"
+            fontSize="1.5rem"
+            textAlign="center"
           >
             <Heading as="h2" color="red.500">
               Transfer failed.
             </Heading>
+            <Text fontSize="1rem" color="red.600">
+              {sendError.slice(-100)}
+            </Text>
           </Flex>
         );
       default:
@@ -96,6 +102,7 @@ export const TransferModal = ({
             setAction={setAction}
             thirdwebTokens={thirdwebTokens}
             walletAddress={walletAddress}
+            setSendError={setSendError}
           />
         );
     }
@@ -125,5 +132,3 @@ export const TransferModal = ({
     </Flex>
   );
 };
-
-// 3:51:51

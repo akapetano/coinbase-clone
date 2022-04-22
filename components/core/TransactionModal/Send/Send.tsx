@@ -12,6 +12,7 @@ export const Send = ({
   setAction,
   thirdwebTokens,
   walletAddress,
+  setSendError,
 }) => {
   const [amount, setAmount] = useState('');
   const [recipient, setRecipient] = useState('');
@@ -61,6 +62,17 @@ export const Send = ({
     } catch (error) {
       console.log(error.message);
       setAction('Failed');
+      if (
+        error.message.includes(
+          'Message: execution reverted: ERC20: transfer amount exceeds balance'
+        )
+      ) {
+        setSendError(
+          'Transfer amount exceeds balance. Please check if your balance has sufficient funds.'
+        );
+      } else {
+        setSendError('');
+      }
     }
   };
 
